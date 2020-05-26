@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import {setRepo} from "../store/repo/repo.action";
-import {fetchUserRepo} from "../utils/api";
+import { setRepo } from "../store/repo/repo.action";
+import { fetchUserRepo } from "../controllers/api";
 
 export default function SearchBox() {
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -12,11 +12,14 @@ export default function SearchBox() {
   };
 
   const handleSubmit = e => {
-  
-    fetchUserRepo("Rukmoni").then(data =>
-      dispatch(setRepo({ user: "Rukmoni", data: data }))
-    ); 
-   
+    if (searchTerm) {
+      fetchUserRepo(searchTerm).then(data =>
+        dispatch(setRepo({ user: searchTerm, data: data }))
+      );
+    } else {
+      console.log("Show alert");
+    }
+    //fetchUserRepo("Rukmoni").then(data => console.log(data));
   };
 
   return (
@@ -26,6 +29,7 @@ export default function SearchBox() {
         placeholder="Enter GitHub UserName"
         value={searchTerm}
         onChange={handleChange}
+        style={{ width: 300 }}
       />
       <button onClick={handleSubmit}>Submit</button>
     </div>

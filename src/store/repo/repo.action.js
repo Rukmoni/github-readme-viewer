@@ -1,9 +1,11 @@
-import REPO_ACTIONS from './repo.actionTypes';
+import RepoActions from "./repo.type";
 
-export const setRepo=(data)=>{
+export const setRepo = props => ({
+  type: RepoActions.UPDATE_REPO_LIST,
+  payload: props
+});
 
-    return{
-        type:REPO_ACTIONS.FETCH_REPO_SUCCESS,
-        payload:data
-    }
-}
+export const openReadme = url => ({
+  type: RepoActions.OPEN_READ_ME,
+  payload: url
+});
