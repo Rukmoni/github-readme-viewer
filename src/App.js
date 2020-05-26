@@ -10,7 +10,7 @@ import "./styles.css";
 import ReadmeViewer from "./views/ReadmeViewer";
 import ReposList from "./components/ReposList";
 import SearchBox from "./components/SearchBox";
-import HomeView from "./views/HomeView";
+
 const drawerWidth = 340;
 
 const useStyles = makeStyles(theme => ({
